@@ -61,7 +61,7 @@ pub fn bbands_py(
     let mut output_sum = vec![0.0; len];
     let mut output_sum_sq = vec![0.0; len];
 
-    py.allow_threads(|| {
+    py.detach(|| {
         bbands::bbands(
             price_slice,
             period,
@@ -147,7 +147,7 @@ pub fn bbands_inc_py(
     dev_up: TAFloat,
     dev_down: TAFloat,
 ) -> PyResult<(TAFloat, TAFloat, TAFloat, TAFloat, TAFloat, TAFloat)> {
-    py.allow_threads(|| {
+    py.detach(|| {
         bbands::bbands_inc(
             price,
             prev_sma,

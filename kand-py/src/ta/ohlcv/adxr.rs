@@ -57,7 +57,7 @@ pub fn adxr_py(
     let mut output_minus_dm = vec![0.0; len];
     let mut output_tr = vec![0.0; len];
 
-    py.allow_threads(|| {
+    py.detach(|| {
         adxr::adxr(
             high_slice,
             low_slice,
@@ -150,7 +150,7 @@ pub fn adxr_inc_py(
     prev_smoothed_tr: TAFloat,
     period: usize,
 ) -> PyResult<(TAFloat, TAFloat, TAFloat, TAFloat, TAFloat)> {
-    py.allow_threads(|| {
+    py.detach(|| {
         adxr::adxr_inc(
             high,
             low,

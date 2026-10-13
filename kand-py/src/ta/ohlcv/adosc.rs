@@ -63,7 +63,7 @@ pub fn adosc_py(
     let mut output_slow_ema = vec![0.0; len];
 
     // Perform ADOSC calculation while releasing the GIL
-    py.allow_threads(|| {
+    py.detach(|| {
         adosc::adosc(
             input_high,
             input_low,
@@ -137,7 +137,7 @@ pub fn adosc_inc_py(
     slow_period: usize,
 ) -> PyResult<(TAFloat, TAFloat, TAFloat, TAFloat)> {
     // Perform the incremental ADOSC calculation while releasing the GIL
-    py.allow_threads(|| {
+    py.detach(|| {
         adosc::adosc_inc(
             high,
             low,

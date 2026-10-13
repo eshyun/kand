@@ -59,7 +59,7 @@ pub fn cci_py(
     let mut output_mean_dev = vec![0.0; len];
 
     // Perform the CCI calculation while releasing the GIL to allow other Python threads to run
-    py.allow_threads(|| {
+    py.detach(|| {
         cci::cci(
             input_high,
             input_low,
@@ -129,7 +129,7 @@ pub fn cci_inc_py(
     tp_buffer: Vec<TAFloat>,
 ) -> PyResult<TAFloat> {
     let mut buffer = tp_buffer;
-    py.allow_threads(|| {
+    py.detach(|| {
         cci::cci_inc(
             prev_sma_tp,
             new_high,

@@ -53,7 +53,7 @@ pub fn aroonosc_py(
     let mut output_days_since_high = vec![0_usize; len];
     let mut output_days_since_low = vec![0_usize; len];
 
-    py.allow_threads(|| {
+    py.detach(|| {
         aroonosc::aroonosc(
             high_slice,
             low_slice,
@@ -129,7 +129,7 @@ pub fn aroonosc_inc_py(
     days_since_low: usize,
     period: usize,
 ) -> PyResult<(TAFloat, TAFloat, TAFloat, usize, usize)> {
-    py.allow_threads(|| {
+    py.detach(|| {
         aroonosc::aroonosc_inc(
             high,
             low,

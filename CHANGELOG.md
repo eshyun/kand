@@ -12,6 +12,7 @@ This document records all significant updates and changes to the Kand project.
 - Add CONTRIBUTING
 - Update Readme add Disclaimer
 - Add CORREL (Pearson's Correlation Coefficient) indicator (#27)
+- Add Python 3.14/3.15 support (upgrade pyo3 0.25 → 0.29, numpy 0.25 → 0.29)
 
 ### 🐛 Bug Fixes
 
